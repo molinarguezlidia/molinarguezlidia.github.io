@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tu Nombre | Psicólogo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              beige: {
+                light: '#fdfaf6',
+                DEFAULT: '#f5f0ea',
+                dark: '#e9e1d7',
+              },
+              accent: '#bfa58a',
+              text: '#3e3e3e',
+            },
+            fontFamily: {
+              sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-beige-light text-text font-sans">
+    <header class="p-6 flex justify-between items-center max-w-5xl mx-auto">
+      <h1 class="text-2xl font-semibold">Tu Nombre</h1>
+      <nav>
+        <ul class="flex space-x-6 text-sm">
+          <li><a href="#sobre-mi" class="hover:underline">Sobre mí</a></li>
+          <li><a href="#servicios" class="hover:underline">Servicios</a></li>
+          <li><a href="#contacto" class="hover:underline">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="text-center py-20 bg-beige">
+      <h2 class="text-4xl font-bold mb-4">Hola, soy Tu Nombre</h2>
+      <p class="text-lg max-w-xl mx-auto">
+        Psicólogo especializado en ayudarte a encontrar bienestar emocional, claridad mental y equilibrio en tu vida.
+      </p>
+    </section>
+
+    <section id="sobre-mi" class="max-w-4xl mx-auto px-6 py-16">
+      <h3 class="text-2xl font-semibold mb-4">Sobre mí</h3>
+      <p class="text-text leading-relaxed">
+        Soy psicólogo con experiencia en terapia cognitivo-conductual, gestión emocional y ansiedad. Mi enfoque es cercano, humano y basado en la evidencia científica.
+      </p>
+    </section>
+
+    <section id="servicios" class="bg-beige-dark py-16 px-6">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-2xl font-semibold mb-8 text-center">Servicios</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div class="p-6 border border-beige rounded-lg shadow-sm bg-white">
+            <h4 class="font-semibold mb-2">Terapia Individual</h4>
+            <p class="text-sm text-gray-600">Sesiones personalizadas para adultos y adolescentes.</p>
+          </div>
+          <div class="p-6 border border-beige rounded-lg shadow-sm bg-white">
+            <h4 class="font-semibold mb-2">Gestión de Ansiedad</h4>
+            <p class="text-sm text-gray-600">Técnicas efectivas para recuperar el equilibrio emocional.</p>
+          </div>
+          <div class="p-6 border border-beige rounded-lg shadow-sm bg-white">
+            <h4 class="font-semibold mb-2">Acompañamiento Online</h4>
+            <p class="text-sm text-gray-600">Consulta desde donde estés, con total confidencialidad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-16 px-6 bg-beige-light">
+      <div class="max-w-md mx-auto text-center">
+        <h3 class="text-2xl font-semibold mb-4">Contacto</h3>
+        <p class="text-text mb-6">¿Te gustaría comenzar? Escríbeme y agendamos una primera sesión.</p>
+        <a href="mailto:tucorreo@ejemplo.com" class="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-[#a78d70] transition">
+          Enviar email
+        </a>
+      </div>
+    </section>
+
+    <footer class="text-center text-sm text-gray-500 py-8">
+      © 2025 Tu Nombre. Todos los derechos reservados.
+    </footer>
+  </body>
+</html>
