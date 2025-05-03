@@ -1,89 +1,618 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tu Nombre | Psicólogo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              beige: {
-                light: '#fdfaf6',
-                DEFAULT: '#f5f0ea',
-                dark: '#e9e1d7',
-              },
-              accent: '#bfa58a',
-              text: '#3e3e3e',
-            },
-            fontFamily: {
-              sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body class="bg-beige-light text-text font-sans">
-    <header class="p-6 flex justify-between items-center max-w-5xl mx-auto">
-      <h1 class="text-2xl font-semibold">Tu Nombre</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm">
-          <li><a href="#sobre-mi" class="hover:underline">Sobre mí</a></li>
-          <li><a href="#servicios" class="hover:underline">Servicios</a></li>
-          <li><a href="#contacto" class="hover:underline">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lidia Molina - Terapia y Bienestar</title>
 
-    <section class="text-center py-20 bg-beige">
-      <h2 class="text-4xl font-bold mb-4">Hola, soy Tu Nombre</h2>
-      <p class="text-lg max-w-xl mx-auto">
-        Psicólogo especializado en ayudarte a encontrar bienestar emocional, claridad mental y equilibrio en tu vida.
-      </p>
-    </section>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <section id="sobre-mi" class="max-w-4xl mx-auto px-6 py-16">
-      <h3 class="text-2xl font-semibold mb-4">Sobre mí</h3>
-      <p class="text-text leading-relaxed">
-        Soy psicólogo con experiencia en terapia cognitivo-conductual, gestión emocional y ansiedad. Mi enfoque es cercano, humano y basado en la evidencia científica.
-      </p>
-    </section>
+    <meta name="description" content="Psicóloga Lidia Molina, terapia online. Terapia individual para el bienestar emocional.">
+    <meta name="keywords" content="psicologo, terapia, online, ansiedad, depresion, bienestar, salud mental, estres, duelo, autoestima">
 
-    <section id="servicios" class="bg-beige-dark py-16 px-6">
-      <div class="max-w-4xl mx-auto">
-        <h3 class="text-2xl font-semibold mb-8 text-center">Servicios</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div class="p-6 border border-beige rounded-lg shadow-sm bg-white">
-            <h4 class="font-semibold mb-2">Terapia Individual</h4>
-            <p class="text-sm text-gray-600">Sesiones personalizadas para adultos y adolescentes.</p>
-          </div>
-          <div class="p-6 border border-beige rounded-lg shadow-sm bg-white">
-            <h4 class="font-semibold mb-2">Gestión de Ansiedad</h4>
-            <p class="text-sm text-gray-600">Técnicas efectivas para recuperar el equilibrio emocional.</p>
-          </div>
-          <div class="p-6 border border-beige rounded-lg shadow-sm bg-white">
-            <h4 class="font-semibold mb-2">Acompañamiento Online</h4>
-            <p class="text-sm text-gray-600">Consulta desde donde estés, con total confidencialidad.</p>
-          </div>
+    <style>
+        /* Importa una fuente bonita (opcional) */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        /* Variables de color */
+        :root {
+            --color-blanco: #FFFFFF;
+            --color-negro: #212529; /* Negro suave de Bootstrap */
+            --color-beige-claro: #F1EBE3; /* Beige intermedio */
+            --color-beige-medio: #E9E2D7; /* Beige medio como opción */
+            --color-texto-secundario: #6c757d; /* Gris de Bootstrap */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif; /* Aplica la fuente importada */
+            color: var(--color-negro);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700; /* Usa un peso más grueso para títulos */
+        }
+
+        /* --- Colores Personalizados --- */
+        .bg-light-beige {
+            background-color: var(--color-beige-claro);
+        }
+
+        /* --- Estilos Barra de Navegación --- */
+        .navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+             /* Asegúrate de que no tenga margen inferior que cause el hueco */
+             /* margin-bottom: 0 !important; */ /* Descomenta si es necesario */
+        }
+        .navbar .navbar-brand {
+            color: var(--color-negro);
+        }
+        .navbar .nav-link {
+            color: var(--color-negro);
+            font-weight: 400; /* Peso normal para enlaces */
+            padding: 0.8rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--color-texto-secundario); /* Un gris para hover/activo */
+        }
+
+        /* --- Sección Hero --- */
+        .hero-section {
+            background-color: var(--color-blanco); /* Fondo blanco para minimalismo */
+             /* Asegúrate de que no tenga margen/padding superior que cause el hueco */
+             /* margin-top: 0 !important; */ /* Descomenta si es necesario */
+             /* padding-top: 0 !important; */ /* Descomenta si es necesario */
+        }
+
+        .hero-section .display-3 {
+            font-size: 3.5rem; /* Tamaño de título principal */
+        }
+
+        /* --- Contenedor del H1 movido --- */
+        .titulo-principal-container h1 {
+             /* Puedes ajustar márgenes si el H1 añade espacio por defecto */
+             /* margin-bottom: 0; */ /* Ejemplo: quitar margen inferior del h1 */
+        }
+
+
+        /* --- Botones --- */
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px; /* Botones redondeados */
+            font-weight: bold;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-dark {
+            background-color: var(--color-negro);
+            border-color: var(--color-negro);
+            color: var(--color-blanco);
+        }
+        .btn-dark:hover {
+            background-color: #333; /* Un poco más claro al pasar el ratón */
+            border-color: #333;
+            transform: translateY(-2px); /* Ligero efecto al pasar el ratón */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline-dark {
+            border-color: var(--color-negro);
+            color: var(--color-negro);
+        }
+        .btn-outline-dark:hover {
+            background-color: var(--color-negro);
+            color: var(--color-blanco);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Secciones --- */
+        section {
+            overflow-x: hidden; /* Evita barras de scroll horizontal por AOS */
+        }
+        section .container {
+            max-width: 1140px; /* Limita el ancho del contenido */
+        }
+
+        /* --- Sobre Mí --- */
+        .profile-circle-container {
+             width: 300px; /* Define el tamaño del círculo */
+             height: 300px; /* Debe ser igual al width para ser un círculo */
+             border-radius: 50%; /* Hace que el contenedor sea redondo */
+             overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+             margin: 0 auto; /* Centra el contenedor horizontalmente */
+             display: block; /* Asegura que el margin auto funcione */
+             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Añade sombra al círculo */
+             margin-bottom: 1.5rem; /* Espacio debajo del círculo antes del texto en móvil/tablet */
+        }
+
+        .profile-circle-container img {
+             display: block; /* Asegura que la imagen se muestre correctamente dentro del contenedor */
+             width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+             height: 100%; /* La imagen ocupa todo el alto del contenedor */
+             object-fit: cover; /* ESCALA la imagen manteniendo su aspecto ratio para cubrir el contenedor. Recorta los bordes si es necesario. */
+             object-position: center; /* Centra la imagen dentro del contenedor */
+             border-radius: 0; /* Asegura que la imagen no tenga su propio border-radius */
+        }
+
+        /* --- Servicios --- */
+        #servicios .fa-3x {
+            margin-bottom: 1rem;
+        }
+        #servicios .rounded {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #servicios .rounded:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Testimonios (Reseñas) --- */
+         #testimonios .card {
+             border: 1px solid rgba(0, 0, 0, 0.1); /* Añade un borde suave */
+             background-color: var(--color-blanco); /* Fondo blanco para las tarjetas de testimonio */
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra suave */
+         }
+         #testimonios .card-body {
+             padding: 2rem;
+             display: flex;
+             flex-direction: column; /* Organiza el contenido en columna */
+             justify-content: center; /* Centra verticalmente si el contenido es corto */
+         }
+         #testimonios .blockquote {
+             font-style: italic;
+             margin-bottom: 1rem;
+             position: relative; /* Para las comillas */
+             padding-left: 1.5rem; /* Espacio para las comillas */
+         }
+         #testimonios .blockquote::before {
+             content: "\201C"; /* Comilla izquierda Unicode */
+             font-size: 3rem;
+             color: rgba(0, 0, 0, 0.1); /* Gris muy claro */
+             position: absolute;
+             left: 0;
+             top: -10px;
+             line-height: 1;
+         }
+         #testimonios .blockquote-footer {
+             margin-top: 0.5rem;
+             font-style: normal;
+             color: var(--color-texto-secundario);
+             background-color: transparent; /* Asegura que el fondo sea transparente */
+         }
+
+        /* --- Contacto --- */
+        #contacto a.btn {
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        .contact-icon {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-negro);
+        }
+        footer p {
+            margin-bottom: 0.25rem;
+        }
+        footer a {
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: var(--color-blanco) !important;
+        }
+        footer a.text-white-50 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+         footer a.text-white-50:hover {
+            color: rgba(255, 255, 255, 0.75) !important;
+         }
+
+        /* --- Responsividad --- */
+        @media (max-width: 991.98px) {
+            .hero-section .display-3 {
+                font-size: 2.8rem;
+            }
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+            /* Ajuste para la imagen circular en tablet */
+            .profile-circle-container {
+                 width: 250px; /* Tamaño un poco más pequeño en tablet */
+                 height: 250px;
+                 margin-bottom: 1.5rem; /* Espacio debajo en tablet */
+            }
+             #sobre-mi .col-lg-6 {
+                 text-align: center; /* Centra el texto de 'Sobre Mí' en tablet */
+             }
+             #testimonios .card-body {
+                 padding: 1.5rem; /* Ajuste de padding en móviles */
+             }
+        }
+
+        @media (max-width: 767.98px) {
+             /* Ajusta el padding de la sección hero si es necesario */
+            .hero-section {
+                 /* min-height: 80vh; */ /* Decide si mantienes una altura mínima */
+                 padding: 2rem 0; /* Reduce padding vertical en móviles */
+            }
+             .hero-section .display-3 { /* Título principal movido */
+                font-size: 2.2rem;
+            }
+             /* Ajusta el padding del contenedor del título principal en móviles */
+            .titulo-principal-container {
+                 padding-top: 3rem !important; /* Reduce el padding superior si usaste pt-5 */
+                 padding-bottom: 1rem !important; /* Reduce el padding inferior si usaste pb-3 */
+            }
+
+            .btn-lg {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+             #contacto .col-sm-6 {
+                 margin-bottom: 2rem; /* Más espacio entre botones de contacto en móvil */
+             }
+             /* Ajuste para la imagen circular en móvil */
+             .profile-circle-container {
+                 width: 200px; /* Tamaño más pequeño en móvil */
+                 height: 200px;
+                 margin-bottom: 2rem; /* Más espacio debajo en móvil */
+             }
+             #sobre-mi .col-lg-6 {
+                 text-align: center; /* Centra el texto de 'Sobre Mí' en móvil */
+             }
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"> Lidia Molina</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#enfoque">Mi Enfoque</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </nav> 
+    <div id="inicio"class="container text-center pt-5 pb-3 titulo-principal-container"> <h1 class="display-3 fw-bold text-dark" data-aos="fade-up">Lidia Molina, psicóloga sanitaria online</h1>
+    </div>
+    <section class="hero-section d-flex align-items-center pt-0 pb-5"> <div class="container text-center">
+            <div data-aos="fade-up" data-aos-delay="100"> <p class="lead mb-4 text-secondary">A veces, todo se vuelve cuesta arriba. Te sientes cansado, pero no físicamente. Te duele algo por dentro, pero no sabes cómo explicarlo. Has aprendido a disimular, a sonreír, a decir “estoy bien” cuando por dentro estás gritando en silencio.</p>
+                <p class="lead mb-4 text-secondary">Empieza hoy. Mereces sentirte bien.</p>
+                <a href="#contacto" class="btn btn-dark btn-lg me-2 mb-2 mb-md-0">Contactar</a>
+                <a href="#servicios" class="btn btn-outline-dark btn-lg">Ver Servicios</a>
+            </div>
+        </div>
     </section>
 
-    <section id="contacto" class="py-16 px-6 bg-beige-light">
-      <div class="max-w-md mx-auto text-center">
-        <h3 class="text-2xl font-semibold mb-4">Contacto</h3>
-        <p class="text-text mb-6">¿Te gustaría comenzar? Escríbeme y agendamos una primera sesión.</p>
-        <a href="mailto:tucorreo@ejemplo.com" class="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-[#a78d70] transition">
-          Enviar email
-        </a>
-      </div>
+    <section id="sobre-mi" class="py-5 bg-light-beige">
+        <div class="container">
+            <div class="row align-items-center">
+                 <div class="col-lg-6 d-flex justify-content-center align-items-center" data-aos="fade-right">
+                     <div class="profile-circle-container">
+                         <img src="jarron.jpg" alt="Foto de Lidia Molina Psicóloga"> </div>
+                 </div>
+                 <div class="col-lg-6" data-aos="fade-left">
+                     <h2 class="fw-bold mb-3">Sobre Mí</h2>
+                     <p class="text-secondary mb-3">Soy psicóloga graduada con Máster en Psicología General Sanitaria y colegiada nº T-02403. Trabajo con personas adultas desde un enfoque cognitivo-conductual, integrando también herramientas de las terapias contextuales, siempre basándome en la evidencia científica. Apuesto por una terapia cercana, respetuosa y adaptada a cada persona, donde la escucha activa y el vínculo terapéutico son pilares fundamentales. Me encuentro en constante formación para ofrecerte un acompañamiento riguroso, actualizado y humano.</p>
+                     <p class="text-secondary mb-3"></p> </div>
+            </div>
+        </div>
     </section>
 
-    <footer class="text-center text-sm text-gray-500 py-8">
-      © 2025 Tu Nombre. Todos los derechos reservados.
+
+    <section id="enfoque" class="py-5">
+        <div class="container">
+             <div class="text-center mb-5" data-aos="fade-up">
+                 <h2 class="fw-bold">¿Por qué elegir mi consulta?</h2>
+                 <p class="text-secondary mx-auto" style="max-width: 700px;">Mi enfoque está centrado en ti: en entender tus necesidades, preocupaciones y sentimientos. Cada persona es única, y por eso adapto las sesiones a tu ritmo y situación personal, siempre basándome en la evidencia científica y en terapias que han demostrado ser eficaces.</p>
+                 <p class="text-secondary mx-auto" style="max-width: 700px;">Me esfuerzo por crear un ambiente de confianza, donde te sientas cómod@ y escuchad@, sin prisas ni juicios. Juntos, trabajaremos de manera clara y transparente, para que cada paso que demos en terapia te acerque a tu bienestar y al equilibrio emocional que buscas.</p>
+             </div>
+             <div class="row" data-aos="fade-up" data-aos-delay="100"> <div class="col-md-6 mb-3 d-flex" data-aos="fade-right" data-aos-delay="200"> <i class="fas fa-lock text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                         <h5 class="fw-bold">Confidencialidad</h5>
+                         <p class="text-secondary mb-0">Todo lo que hablemos en sesión es estrictamente confidencial.</p>
+                     </div>
+                 </div>
+                  <div class="col-md-6 mb-3 d-flex" data-aos="fade-left" data-aos-delay="200">
+                     <i class="fas fa-handshake-angle text-dark me-3 mt-1 fa-fw fa-lg"></i>
+                     <div>
+                         <h5 class="fw-bold">Relación Terapéutica</h5>
+                         <p class="text-secondary mb-0">Basada en la confianza, la empatía y el respeto mutuo.</p>
+                     </div>
+                 </div>
+                  <div class="col-md-6 mb-3 d-flex" data-aos="fade-right" data-aos-delay="300">
+                      <i class="fas fa-user-check text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                           <h5 class="fw-bold">Personalización</h5>
+                           <p class="text-secondary mb-0">Cada persona es única, por lo que adapto la terapia a tu situación.</p>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-3 d-flex" data-aos="fade-left" data-aos-delay="300">
+                     <i class="fas fa-toolbox text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                           <h5 class="fw-bold">Herramientas Prácticas</h5>
+                           <p class="text-secondary mb-0">Te proporcionaré estrategias que podrás aplicar en tu día a día.</p>
+                     </div>
+                  </div>
+             </div>
+        </div>
+    </section>
+
+    <section id="informacion-gratuita" class="py-5 bg-light-beige"> <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="fw-bold">Infórmate ahora gratis</h2>
+            <p class="text-secondary"></p>
+        </div>
+        <div class="row justify-content-center">
+             <div class="col-md-8 col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100"> <div class="card h-100">
+                     <div class="card-body text-center"> <div class="mb-3"><i class="fas fa-phone-volume fa-3x text-dark"></i></div> <p>La primera llamada de orientación es totalmente <strong>gratuita</strong> (10-15 minutos).</p>
+                         <p class="h4"> <a href="tel:+34614291144" class="text-decoration-none text-dark">614 29 11 44</a>
+                         </p>
+                         <p class="small text-secondary">(Llamada o WhatsApp)</p> </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="terapia-online" class="py-5"> <div class="container">
+        <div class="row justify-content-center">
+             <div class="col-md-8 col-lg-6 mb-4" data-aos="fade-up"> <div class="card h-100 shadow-sm"> <div class="card-body text-center">
+                         <div class="mb-3"><i class="fas fa-laptop-medical fa-3x text-dark"></i></div> <h4 class="fw-bold mb-3">¿Por qué elegir terapia online?</h4>
+                         <p class="text-secondary">La terapia online te permite acceder a un espacio seguro y profesional desde la comodidad de tu casa, sin desplazamientos ni esperas. Es flexible, confidencial y se adapta a tu ritmo de vida. Puedes elegir el lugar donde te sientas más cómodo/a para hablar, facilitando la apertura emocional. La distancia no es un límite: lo importante es que te sientas acompañado/a y escuchado/a, estés donde estés.</p>
+                     </div>
+                 </div>
+             </div>
+        </div>
+   </div>
+    </section>
+
+    <section id="te-identificas" class="py-5 bg-light-beige"> <div class="container" data-aos="fade-up">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">¿Te identificas con algo de esto?</h2>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-start">
+            <div class="d-flex mb-4" data-aos="fade-right" style="max-width: 700px;">
+                <i class="fas fa-heart-pulse text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                    <h5 class="fw-bold mb-1">Sientes que algo no está bien en tu cuerpo, pero no sabes explicar qué.</h5>
+                    <p class="text-secondary">Te preocupa tu salud, visitas al médico, pero no hay un diagnóstico claro. Aun así, la inquietud no se va.</p>
+                </div>
+            </div>
+            <div class="d-flex mb-4" data-aos="fade-left" data-aos-delay="100" style="max-width: 700px;">
+                <i class="fas fa-battery-quarter text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                    <h5 class="fw-bold mb-1">Estás agotado, incluso después de descansar.</h5>
+                    <p class="text-secondary">Te cuesta concentrarte, todo parece requerir un esfuerzo enorme. Te despiertas sin energía para afrontar el día.</p>
+                </div>
+            </div>
+            <div class="d-flex mb-4" data-aos="fade-right" data-aos-delay="200" style="max-width: 700px;">
+                <i class="fas fa-brain text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                    <h5 class="fw-bold mb-1">Tu mente no se apaga nunca.</h5>
+                    <p class="text-secondary">Te atrapan los pensamientos, preocupaciones constantes, vueltas y vueltas a lo mismo. Quieres paz, pero no sabes cómo conseguirla.</p>
+                </div>
+            </div>
+             <div class="d-flex mb-4" data-aos="fade-left" data-aos-delay="300" style="max-width: 700px;">
+                <i class="fas fa-user-shield text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                     <h5 class="fw-bold mb-1">Te sientes culpable por cosas que no están bajo tu control.</h5>
+                     <p class="text-secondary">Te exiges demasiado, sientes que nunca haces suficiente. La culpa aparece incluso en momentos de descanso.</p>
+                </div>
+             </div>
+              <div class="d-flex mb-4" data-aos="fade-right" data-aos-delay="400" style="max-width: 700px;">
+                <i class="fas fa-face-meh text-dark me-3 mt-1 fa-fw fa-lg"></i> <div>
+                     <h5 class="fw-bold mb-1">Te cuesta disfrutar como antes.</h5>
+                     <p class="text-secondary">Actividades que solían ilusionarte ahora se sienten vacías. Te preguntas si estás perdiendo el rumbo.</p>
+                </div>
+              </div>
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
+           <p class="lead">Si te sientes así, la terapia puede ayudarte a encontrar el camino.</p>
+           <a href="https://wa.me/+34614291144?text=Hola,%20me%20gustaría%20pedir%20más%20información%20sobre%20la%20terapia." class="btn btn-dark btn-lg">Hablemos</a>
+        </div>
+   </div>
+ </section>
+
+
+
+
+    <section id="servicios" class="py-5 bg-light-beige">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="fw-bold">¿En qué puedo ayudarte?</h2>
+                <p class="text-secondary">Ofrezco terapia online para abordar diversas dificultades.</p> </div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                     <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center"> <div class="mb-3"><i class="fas fa-wind fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Ansiedad</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                        <div class="mb-3"><i class="fas fa-cloud-rain fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Depresión</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300"> <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                         <div class="mb-3"><i class="fas fa-bolt fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Estrés</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100"> <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                         <div class="mb-3"><i class="fas fa-heart-crack fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Duelo</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                     <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                        <div class="mb-3"><i class="fas fa-ban fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Adicciones</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                     <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                         <div class="mb-3"><i class="fas fa-star fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Autoestima</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100"> <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                         <div class="mb-3"><i class="fas fa-road fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Crisis vitales</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                     <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                         <div class="mb-3"><i class="fas fa-ghost fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2">Fobias</h4>
+                     </div>
+                 </div>
+                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                     <div class="p-4 bg-white shadow-sm rounded h-100 d-flex flex-column align-items-center justify-content-center">
+                         <div class="mb-3"><i class="fas fa-question-circle fa-3x text-dark"></i></div> <h4 class="fw-bold mb-2 text-center">¿No ves tu caso? <br>Contáctame</h4> </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+  
+
+    <section class="py-5"> <div class="container">
+             <div class="text-center mb-5" data-aos="fade-up">
+                 <h2 id="contacto" class="fw-bold">Contacto</h2>
+                 <p class="text-secondary">Si tienes alguna pregunta o deseas reservar tu <strong>llamada gratuita</strong> de orientación (10-15 min), no dudes en contactarme.</p>
+                 <p class="text-secondary">También dispongo de <strong>descuentos</strong> para estudiantes y personas desempleadas.</p>
+             </div>
+             <div class="row justify-content-center text-center">
+                 <div class="col-lg-8 col-md-10">
+                     <div class="row">
+                          <div class="col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                               <div class="contact-icon mb-2">
+                                   <i class="fas fa-envelope fa-2x text-dark"></i>
+                               </div>
+                               <h5 class="fw-bold">Email</h5>
+                               <p class="text-secondary">Envíame un correo electrónico:</p>
+                               <a href="mailto:molinarguezlidia@gmail.com" class="btn btn-outline-dark"> <i class="fas fa-envelope me-2"></i>molinarguezlidia@gmail.com
+                               </a>
+                          </div>
+                          <div class="col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                               <div class="contact-icon mb-2">
+                                    <i class="fab fa-whatsapp fa-2x text-dark"></i>
+                               </div>
+                               <h5 class="fw-bold">WhatsApp</h5>
+                               <p class="text-secondary">Escríbeme directamente:</p>
+                               <a href="https://wa.me/+34614291144?text=Hola,%20me%20gustaría%20pedir%20más%20información%20sobre%20la%20terapia." target="_blank" class="btn btn-outline-dark"> <i class="fab fa-whatsapp me-2"></i>Enviar Mensaje
+                               </a>
+                          </div>
+                     </div>
+                      </div>
+             </div>
+         </div>
+     </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-1">&copy; <span id="currentYear"></span> Lidia Molina Psicología. Todos los derechos reservados.</p> <p class="small mb-0">
+                <a href="politica_privacidad.html" class="text-white-50 me-2">Política de Privacidad</a> |
+                 <a href="aviso_legal.html" class="text-white-50 ms-2">Aviso Legal</a>
+                 </p>
+        </div>
     </footer>
-  </body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializa Animate On Scroll
+        AOS.init({
+            duration: 800, // Duración un poco más corta
+            once: true // La animación ocurre solo una vez por elemento
+        });
+
+        // Script para actualizar el año del copyright automáticamente
+        function updateCopyrightYear() {
+            // Se usará la fecha actual del navegador del cliente
+             document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+        updateCopyrightYear(); // Llama a la función al cargar la página
+
+
+        // Smooth scroll para los enlaces de navegación (Mejora la navegación interna)
+        document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Previene el comportamiento por defecto del ancla
+                e.preventDefault();
+
+                // Obtiene el elemento destino
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if(targetElement) {
+                    // Calcula la posición del elemento destino
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    // Considera la altura de la barra de navegación fija si existe
+                    const offsetPosition = elementPosition + window.pageYOffset - (document.querySelector('.navbar.sticky-top')?.offsetHeight || 0);
+
+                    // Realiza el scroll suave
+                     window.scrollTo({
+                         top: offsetPosition,
+                         behavior: "smooth"
+                     });
+
+                    // Cierra el menú de navegación en móviles si está abierto
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarToggler && navbarCollapse.classList.contains('show')) {
+                        // Simula un clic en el toggler para cerrar el menú
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+
+        // Opcional: Activar enlace de navegación según la sección visible
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        function changeNavActiveState() {
+          let index = sections.length;
+
+          while(--index && window.scrollY + 100 < sections[index].offsetTop) {} // +100 para ajustar el offset
+
+          navLinks.forEach((link) => link.classList.remove('active'));
+          // Asegurarse de que el enlace correspondiente existe
+          const activeLink = document.querySelector(`.navbar-nav .nav-link[href="#${sections[index].id}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+
+        // Llama a la función al cargar y al hacer scroll
+        changeNavActiveState();
+        window.addEventListener('scroll', changeNavActiveState);
+
+    </script>
+
+</body>
 </html>
