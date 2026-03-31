@@ -531,24 +531,23 @@ En ambos casos, la distancia no es un límite: puedes elegir el formato que mejo
                       </div>
              </div>
 
-    <div class="row justify-content-center">
-    <div class="col-auto">  <!-- o col-10 / col-lg-8 si quieres limitar el ancho máximo -->
-
-        <div id="js_widget" class="ie-common-widget ie-reviews mt-5">
-            <script type="text/javascript" src="https://www.mundopsicologos.com/widget/review_extended?com=436216&h=0cf500c1eb53ae64b9a72186f57feeb4&v=10"></script>
-            <div class="portal-by">
-                <a id="js_portal_by" href="https://www.mundopsicologos.com?utm_source=436216&utm_medium=widget&utm_campaign=widget-review_extended" rel="nofollow" style="text-decoration:none;color:#617d97;font-family:Hind,sans-serif;">
-                Por <span style='color:#149c97;font-family:Hind,sans-serif;font-weight:400;letter-spacing: 0.015em;text-decoration:underline;'>MundoPsicologos.com</span>
-                </a>
+  <div class="row justify-content-center">
+                <div class="col-auto">
+                    <!-- WIDGET OCULTO POR DEFECTO -->
+                    <div id="js_widget_container" style="display: none;">
+                        <div id="js_widget" class="ie-common-widget ie-reviews mt-5">
+                            <script type="text/javascript" src="https://www.mundopsicologos.com/widget/review_extended?com=436216&h=0cf500c1eb53ae64b9a72186f57feeb4&v=10"></script>
+                            <div class="portal-by">
+                                <a id="js_portal_by" href="https://www.mundopsicologos.com?utm_source=436216&utm_medium=widget&utm_campaign=widget-review_extended" rel="nofollow" style="text-decoration:none;color:#617d97;font-family:Hind,sans-serif;">
+                                Por <span style='color:#149c97;font-family:Hind,sans-serif;font-weight:400;letter-spacing: 0.015em;text-decoration:underline;'>MundoPsicologos.com</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-        
-         </div>
-     </section>
+    </section>
 
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
@@ -576,97 +575,68 @@ En ambos casos, la distancia no es un límite: puedes elegir el formato que mejo
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializa Animate On Scroll
-        AOS.init({
-            duration: 800, // Duración un poco más corta
-            once: true // La animación ocurre solo una vez por elemento
+        AOS.init({ duration: 800, once: true });
+
+        function updateCopyrightYear() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+
+        function mostrarWidget() {
+            const container = document.getElementById('js_widget_container');
+            if (container) container.style.display = 'block';
+        }
+
+        function aceptarCookies() {
+            localStorage.setItem('cookiesLidiaAceptadas', 'true');
+            document.getElementById('cookie-overlay').style.display = 'none';
+            mostrarWidget();                    // ← Muestra el widget al instante
+        }
+
+        function rechazarCookies() {
+            localStorage.setItem('cookiesLidiaRechazadas', 'true');
+            document.getElementById('cookie-overlay').style.display = 'none';
+            // El widget nunca se mostrará
+        }
+
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('cookiesLidiaAceptadas') === 'true') {
+                mostrarWidget();                // Ya había aceptado antes
+            } else if (!localStorage.getItem('cookiesLidiaRechazadas')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-overlay').style.display = 'flex';
+                }, 600);
+            }
+            updateCopyrightYear();
         });
 
-        // Script para actualizar el año del copyright automáticamente
-        function updateCopyrightYear() {
-            // Se usará la fecha actual del navegador del cliente
-             document.getElementById('currentYear').textContent = new Date().getFullYear();
-        }
-        updateCopyrightYear(); // Llama a la función al cargar la página
-
-
-
-    function aceptarCookies() {
-        localStorage.setItem('cookiesLidiaAceptadas', 'true');
-        document.getElementById('cookie-overlay').style.display = 'none';
-    }
-
-    function rechazarCookies() {
-        // Al rechazar, simplemente cerramos pero podrías guardar que ha rechazado
-        document.getElementById('cookie-overlay').style.display = 'none';
-    }
-
-    window.addEventListener('load', function() {
-        if (!localStorage.getItem('cookiesLidiaAceptadas')) {
-            setTimeout(() => {
-                document.getElementById('cookie-overlay').style.display = 'flex';
-            }, 500);
-        }
-    });
-</script>
-    <script>
-
-        // Smooth scroll para los enlaces de navegación (Mejora la navegación interna)
+        // Smooth scroll y nav active (tu código anterior sin cambios)
         document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // Previene el comportamiento por defecto del ancla
                 e.preventDefault();
-
-                // Obtiene el elemento destino
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-
                 if(targetElement) {
-                    // Calcula la posición del elemento destino
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    // Considera la altura de la barra de navegación fija si existe
-                    const offsetPosition = elementPosition + window.pageYOffset - (document.querySelector('.navbar.sticky-top')?.offsetHeight || 0);
-
-                    // Realiza el scroll suave
-                     window.scrollTo({
-                         top: offsetPosition,
-                         behavior: "smooth"
-                     });
-
-                    // Cierra el menú de navegación en móviles si está abierto
+                    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (document.querySelector('.navbar.sticky-top')?.offsetHeight || 0);
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     const navbarToggler = document.querySelector('.navbar-toggler');
                     const navbarCollapse = document.querySelector('.navbar-collapse');
-                    if (navbarToggler && navbarCollapse.classList.contains('show')) {
-                        // Simula un clic en el toggler para cerrar el menú
-                        navbarToggler.click();
-                    }
+                    if (navbarToggler && navbarCollapse.classList.contains('show')) navbarToggler.click();
                 }
             });
         });
 
-        // Opcional: Activar enlace de navegación según la sección visible
         const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
         const sections = document.querySelectorAll('section[id]');
-
         function changeNavActiveState() {
-          let index = sections.length;
-
-          while(--index && window.scrollY + 100 < sections[index].offsetTop) {} // +100 para ajustar el offset
-
-          navLinks.forEach((link) => link.classList.remove('active'));
-          // Asegurarse de que el enlace correspondiente existe
-          const activeLink = document.querySelector(`.navbar-nav .nav-link[href="#${sections[index].id}"]`);
-          if (activeLink) {
-            activeLink.classList.add('active');
-          }
+            let index = sections.length;
+            while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.navbar-nav .nav-link[href="#${sections[index].id}"]`);
+            if (activeLink) activeLink.classList.add('active');
         }
-
-        // Llama a la función al cargar y al hacer scroll
         changeNavActiveState();
         window.addEventListener('scroll', changeNavActiveState);
-
     </script>
-
 </body>
 </html>
 
