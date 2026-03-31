@@ -558,6 +558,18 @@ En ambos casos, la distancia no es un límite: puedes elegir el formato que mejo
                  </p>
         </div>
     </footer>
+    <!-- BANNER DE COOKIES -->
+<div id="cookie-banner" style="display: none; position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; color: #333; padding: 25px; box-shadow: 0 0 30px rgba(0,0,0,0.2); z-index: 11000; border-radius: 12px; max-width: 500px; border: 1px solid #E9E2D7;">
+    <h5 style="font-weight: bold; font-size: 1.1rem;">Aviso de Cookies</h5>
+    <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 20px;">
+        Utilizamos cookies para mejorar su experiencia. Al continuar navegando, acepta su uso.
+        <a href="politica_privacidad.html" style="color: #212529; text-decoration: underline;">Más información</a>.
+    </p>
+    <div style="display: flex; gap: 10px;">
+        <button onclick="aceptarCookies()" style="flex: 1; background: #212529; color: #fff; border: none; padding: 10px; border-radius: 50px; font-weight: bold; cursor: pointer;">Aceptar</button>
+        <button onclick="document.getElementById('cookie-banner').style.display='none'" style="flex: 1; background: #F1EBE3; color: #212529; border: none; padding: 10px; border-radius: 50px; font-weight: bold; cursor: pointer;">Cerrar</button>
+    </div>
+</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -575,7 +587,19 @@ En ambos casos, la distancia no es un límite: puedes elegir el formato que mejo
              document.getElementById('currentYear').textContent = new Date().getFullYear();
         }
         updateCopyrightYear(); // Llama a la función al cargar la página
+// LÓGICA PARA EL BANNER DE COOKIES
+        function aceptarCookies() {
+            localStorage.setItem('cookiesLidiaAceptadas', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
 
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('cookiesLidiaAceptadas')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').style.display = 'block';
+                }, 1000);
+            }
+        });
 
         // Smooth scroll para los enlaces de navegación (Mejora la navegación interna)
         document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
